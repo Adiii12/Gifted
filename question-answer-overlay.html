@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title></title>
+  </head>
+  <body>
+    <div class="question-answer-overlay" id="overlay">
+        <div class="question-box">
+          <div class="questions" id="questionsContainer">
+            <!-- JS will inject question + input + button here -->
+          </div>
+        </div>
+      </div>
+      <main style="padding: 20px;">
+        <h1>Welcome to the Home Page</h1>
+      </main>
+      <script>
+        const questions = [
+          "Qui seriez-vous sans les attentes qu’on a posées sur vous ?",
+          "Quel poids portez-vous, qui ne vous appartient pas ?",
+          "Quelle épreuve vous a forcée à devenir fort(e) ?",
+          "À quel moment avez-vous commencé à douter de vous ?",
+          "Quand avez-vous oublié votre propre lumière ?",
+          "Qu'y a t-il derrière vos silences ?",
+          "Qu’essayez-vous de réparer seul(e) ?",
+          "Qu’est-ce qui vous a fait plié sans jamais vous briser ?",
+          "Si vous pouviez vous reconstruire, par quoi commenceriez-vous ?",
+          "De quoi avez-vous vraiment besoin aujourd’hui ?",
+          "Qu’avez-vous appris à cacher pour ne pas déranger ?",
+          "Quelle part de vous mérite d’être entendue ?",
+          "Qui seriez-vous sans vos peurs ?"
+        ];
+      
+        const successResponses = [
+          "Vous êtes plus fort(e) que ce que vous croyez.",
+          "Ce que vous ressentez est une boussole, pas un fardeau.",
+          "Votre histoire n’est pas un poids, c’est le fondement de votre force.",
+          "Vous méritez le calme et l’espace.",
+          " Il n’est jamais trop tard pour vous prioriser.",
+          "Il est temps de vous retrouver.",
+          "Vos épreuves ont de la valeur. Elles font de vous qui vous êtes."
+        ];
+      
+        const overlayEl = document.getElementById('overlay');
+        const questionsContainer = document.getElementById('questionsContainer');
+      
+        // Load random question with input and button
+        window.onload = () => {
+          const randomIndex = Math.floor(Math.random() * questions.length);
+          const questionText = questions[randomIndex];
+      
+          questionsContainer.innerHTML = `
+            <div id="questionText">${questionText}</div>
+            <input type="text" id="answerInput" placeholder="Écrivez vos pensées…" />
+            <button onclick="submitAnswer()" id="submitBtn">Submit</button>
+            <div class="success-message" id="successMsg">Thank you! Redirecting...</div>
+          `;
+        };
+      
+        function submitAnswer() {
+          const input = document.getElementById('answerInput');
+          const answer = input.value.trim();
+          const questionText = document.getElementById('questionText');
+          const button = document.querySelector('.questions button');
+          const successMsg = document.getElementById('successMsg');
+      
+          if (answer === '') {
+            alert('Veuillez entrer une réponse.');
+            return;
+          }
+      
+          // Set a random success message
+          const randomSuccess = successResponses[Math.floor(Math.random() * successResponses.length)];
+          successMsg.innerText = randomSuccess;
+      
+          questionText.style.display = 'none';
+          input.style.display = 'none';
+          button.style.display = 'none';
+          successMsg.style.display = 'block';
+      
+          setTimeout(() => {
+            overlayEl.style.opacity = '0';
+            setTimeout(() => {
+              overlayEl.style.display = 'none';
+              document.body.classList.remove('modal-open');
+            }, 800);
+          }, 2000);
+        }
+      </script>
+      
+  </body>
+</html>
