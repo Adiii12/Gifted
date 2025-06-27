@@ -3,93 +3,190 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
     <title></title>
   </head>
   <body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      .question-answer-overlay {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        top: 0px;
+        z-index: 999999 !important;
+        background-image: url("./../img/Rectangle\ 34624302.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .question-answer-overlay .question-box {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #questionsContainer {
+        max-width: 813px;
+        width: 90%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      #successMsg {
+        font-family: "Spectral", serif;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #071f65;
+        display: none;
+      }
+      #submitBtn {
+        margin: 20px;
+        border: 1px solid #071f65;
+        padding: 4px 10px;
+        border-radius: 5px;
+        font-family: "Spectral", serif;
+        outline: none;
+        color: #071f65;
+        box-shadow: none;
+        cursor: pointer;
+      }
+      #questionText {
+        font-family: "Spectral", serif;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 48.06px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #071f65;
+        margin-bottom: 50px;
+      }
+      #answerInput {
+        text-align: center;
+        max-width: 595px;
+        width: 100%;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        border-bottom: 1px solid #f7f6f4;
+        height: 76px;
+        margin: auto;
+        background: transparent;
+        font-family: "Spectral", serif; /* Change to your desired font */
+        text-align: center; /* Center the placeholder text */
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 33.64px;
+        letter-spacing: 0%;
+        color: #071f65b2;
+      }
+
+      #answerInput::placeholder {
+        font-family: "Spectral", serif; /* Change to your desired font */
+        text-align: center; /* Center the placeholder text */
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 33.64px;
+        letter-spacing: 0%;
+        color: #071f65b2;
+      }
+    </style>
     <div class="question-answer-overlay" id="overlay">
-        <div class="question-box">
-          <div class="questions" id="questionsContainer">
-            <!-- JS will inject question + input + button here -->
-          </div>
+      <div class="question-box">
+        <div class="questions" id="questionsContainer">
+          <!-- JS will inject question + input + button here -->
         </div>
       </div>
-      <main style="padding: 20px;">
-        <h1>Welcome to the Home Page</h1>
-      </main>
-      <script>
-        const questions = [
-          "Qui seriez-vous sans les attentes qu’on a posées sur vous ?",
-          "Quel poids portez-vous, qui ne vous appartient pas ?",
-          "Quelle épreuve vous a forcée à devenir fort(e) ?",
-          "À quel moment avez-vous commencé à douter de vous ?",
-          "Quand avez-vous oublié votre propre lumière ?",
-          "Qu'y a t-il derrière vos silences ?",
-          "Qu’essayez-vous de réparer seul(e) ?",
-          "Qu’est-ce qui vous a fait plié sans jamais vous briser ?",
-          "Si vous pouviez vous reconstruire, par quoi commenceriez-vous ?",
-          "De quoi avez-vous vraiment besoin aujourd’hui ?",
-          "Qu’avez-vous appris à cacher pour ne pas déranger ?",
-          "Quelle part de vous mérite d’être entendue ?",
-          "Qui seriez-vous sans vos peurs ?"
-        ];
-      
-        const successResponses = [
-          "Vous êtes plus fort(e) que ce que vous croyez.",
-          "Ce que vous ressentez est une boussole, pas un fardeau.",
-          "Votre histoire n’est pas un poids, c’est le fondement de votre force.",
-          "Vous méritez le calme et l’espace.",
-          " Il n’est jamais trop tard pour vous prioriser.",
-          "Il est temps de vous retrouver.",
-          "Vos épreuves ont de la valeur. Elles font de vous qui vous êtes."
-        ];
-      
-        const overlayEl = document.getElementById('overlay');
-        const questionsContainer = document.getElementById('questionsContainer');
-      
-        // Load random question with input and button
-        window.onload = () => {
-          const randomIndex = Math.floor(Math.random() * questions.length);
-          const questionText = questions[randomIndex];
-      
-          questionsContainer.innerHTML = `
+    </div>
+    <main style="padding: 20px">
+      <h1>Welcome to the Home Page</h1>
+    </main>
+    <script>
+      const questions = [
+        "Qui seriez-vous sans les attentes qu’on a posées sur vous ?",
+        "Quel poids portez-vous, qui ne vous appartient pas ?",
+        "Quelle épreuve vous a forcée à devenir fort(e) ?",
+        "À quel moment avez-vous commencé à douter de vous ?",
+        "Quand avez-vous oublié votre propre lumière ?",
+        "Qu'y a t-il derrière vos silences ?",
+        "Qu’essayez-vous de réparer seul(e) ?",
+        "Qu’est-ce qui vous a fait plié sans jamais vous briser ?",
+        "Si vous pouviez vous reconstruire, par quoi commenceriez-vous ?",
+        "De quoi avez-vous vraiment besoin aujourd’hui ?",
+        "Qu’avez-vous appris à cacher pour ne pas déranger ?",
+        "Quelle part de vous mérite d’être entendue ?",
+        "Qui seriez-vous sans vos peurs ?",
+      ];
+
+      const successResponses = [
+        "Vous êtes plus fort(e) que ce que vous croyez.",
+        "Ce que vous ressentez est une boussole, pas un fardeau.",
+        "Votre histoire n’est pas un poids, c’est le fondement de votre force.",
+        "Vous méritez le calme et l’espace.",
+        " Il n’est jamais trop tard pour vous prioriser.",
+        "Il est temps de vous retrouver.",
+        "Vos épreuves ont de la valeur. Elles font de vous qui vous êtes.",
+      ];
+
+      const overlayEl = document.getElementById("overlay");
+      const questionsContainer = document.getElementById("questionsContainer");
+
+      // Load random question with input and button
+      window.onload = () => {
+        const randomIndex = Math.floor(Math.random() * questions.length);
+        const questionText = questions[randomIndex];
+
+        questionsContainer.innerHTML = `
             <div id="questionText">${questionText}</div>
             <input type="text" id="answerInput" placeholder="Écrivez vos pensées…" />
             <button onclick="submitAnswer()" id="submitBtn">Submit</button>
             <div class="success-message" id="successMsg">Thank you! Redirecting...</div>
           `;
-        };
-      
-        function submitAnswer() {
-          const input = document.getElementById('answerInput');
-          const answer = input.value.trim();
-          const questionText = document.getElementById('questionText');
-          const button = document.querySelector('.questions button');
-          const successMsg = document.getElementById('successMsg');
-      
-          if (answer === '') {
-            alert('Veuillez entrer une réponse.');
-            return;
-          }
-      
-          // Set a random success message
-          const randomSuccess = successResponses[Math.floor(Math.random() * successResponses.length)];
-          successMsg.innerText = randomSuccess;
-      
-          questionText.style.display = 'none';
-          input.style.display = 'none';
-          button.style.display = 'none';
-          successMsg.style.display = 'block';
-      
-          setTimeout(() => {
-            overlayEl.style.opacity = '0';
-            setTimeout(() => {
-              overlayEl.style.display = 'none';
-              document.body.classList.remove('modal-open');
-            }, 800);
-          }, 2000);
+      };
+
+      function submitAnswer() {
+        const input = document.getElementById("answerInput");
+        const answer = input.value.trim();
+        const questionText = document.getElementById("questionText");
+        const button = document.querySelector(".questions button");
+        const successMsg = document.getElementById("successMsg");
+
+        if (answer === "") {
+          alert("Veuillez entrer une réponse.");
+          return;
         }
-      </script>
-      
+
+        // Set a random success message
+        const randomSuccess =
+          successResponses[Math.floor(Math.random() * successResponses.length)];
+        successMsg.innerText = randomSuccess;
+
+        questionText.style.display = "none";
+        input.style.display = "none";
+        button.style.display = "none";
+        successMsg.style.display = "block";
+
+        setTimeout(() => {
+          overlayEl.style.opacity = "0";
+          setTimeout(() => {
+            overlayEl.style.display = "none";
+            document.body.classList.remove("modal-open");
+          }, 800);
+        }, 2000);
+      }
+    </script>
   </body>
 </html>

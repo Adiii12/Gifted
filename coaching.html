@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      #coaching {
+        width: 100%;
+        background-image: url("./img/Coching\ bacground\ new\ 1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 170px 0px;
+        height: 90vh;
+      }
+      #innerCoaching {
+        max-width: 699px;
+        width: 90%;
+        margin: auto;
+      }
+      #question {
+        font-family: "Spectral", serif;
+        font-weight: 500;
+        font-size: 56px;
+        line-height: 48.06px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #071f65;
+        margin-bottom: 67px;
+        /* box-shadow: 0px 4px 12px 0px #071f654d; */
+      }
+      #buttonContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+      #buttonContainer button {
+        font-family: "Spectral", serif;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 48.06px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #071f65;
+        background: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        margin: 0px 50px;
+        padding: 0px 20px;
+        margin-bottom: 20px;
+        border-radius: 40px;
+        box-shadow: none;
+      }
+      #buttonContainer button:hover {
+        background: #ffffff1a;
+        box-shadow: 0px 4px 12px 0px #ffffff;
+      }
+      #buttonContainer button.active {
+        background: #ffffff1a;
+        box-shadow: 0px 4px 12px 0px #ffffff;
+      }
+      #enterBtn {
+        width: 253px;
+        height: 65px;
+        background: #ffffff4d;
+        box-shadow: 8px 4px 12px 0px #ffffff;
+        border-radius: 28px;
+        padding-top: 16px;
+        padding-right: 24px;
+        padding-bottom: 16px;
+        padding-left: 24px;
+        margin: auto;
+        border: none;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        display: block;
+        margin: auto;
+        cursor: pointer;
+        font-family: "Spectral", serif;
+        font-weight: 800;
+        font-size: 22px;
+        color: #dbb243;
+      }
+      #finalButton {
+        display: none;
+        margin-top: 20px;
+      }
+      #finalResultsText {
+        font-family: "Spectral", serif;
+        font-weight: 700;
+        font-size: 160px;
+        margin: auto;
+        line-height: 1.2;
+        letter-spacing: 5px;
+        text-align: center;
+        
+        color: #dbb243;
+        text-shadow: 8px 4px 5px #ffffff; /* Shadow directly on the text */
+      }
+      #finalButton button {
+        max-width: 489px;
+        width: 90%;
+        height: 67px;
+        background: #ffffff66;
+        box-shadow: 12px 4px 12px 0px #ffffff;
+        border-radius: 50px;
+        padding-top: 16px;
+        padding-right: 24px;
+        padding-bottom: 16px;
+        padding-left: 24px;
+        display: block;
+        margin: auto;
+        font-family: "Spectral", serif;
+        color: #dbb243;
+        text-shadow: 0px 4px 12px 0px #ffffff;
+        font-weight: 600;
+        font-size: 22px;
+        border: none;
+        outline: none;
+      }
+
+      #finalButton {
+        width: 100%;
+      }
+      @media (max-width: 1100px) {
+        #finalButton button {
+          height: auto;
+        }
+        #question {
+          font-size: 34px;
+          margin-bottom: 10px;
+        }
+        #buttonContainer button {
+          font-size: 15px;
+        }
+        #finalResultsText {
+          font-size: 80px;
+        }
+        #buttonContainer {
+          justify-content: space-between;
+        }
+        #buttonContainer button {
+          width: 32%;
+          margin: 10px 0px;
+        }
+      }
+      @media (max-width: 500px) {
+        #buttonContainer button {
+          width: 48%;
+        }
+        #finalResultsText{
+            font-size: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="coaching">
+      <div id="innerCoaching">
+        <div class="question" id="question">Where are you now?</div>
+        <div class="buttons" id="buttonContainer"></div>
+        <button id="enterBtn">Enter</button>
+        <div class="result-text" id="resultText"></div>
+        <div class="final-button" id="finalButton">
+          <button>Commencez votre Transformation</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const questions = [
+        {
+          text: "Where are you now?",
+          words: [
+            "Burnout",
+            "Honte",
+            "Doute",
+            "Trauma",
+            "Deuil",
+            "Perte",
+            "Solitude",
+            "Blocage",
+            "Déconnecté(e)",
+            "Invisible",
+            "Regret",
+          ],
+        },
+        {
+          text: "Where Do You Want to Be?",
+          words: [
+            "Authentique",
+            "Clarté",
+            "Aligné(e)",
+            "Pouvoir",
+            "Confiant(e)",
+            "Fort(e)",
+            "Résilient(e)",
+            "Paix",
+            "Espoir",
+            "Liberté",
+            "Indépendance",
+          ],
+        },
+      ];
+
+      const programMap = {
+        RISE: ["Clarté", "Aligné(e)", "Confiant(e)", "Espoir"],
+        RESTORE: ["Pouvoir", "Fort(e)", "Résilient(e)", "Indépendance"],
+        RECLAIM: ["Authentique", "Paix", "Liberté"],
+      };
+
+      let step = 0;
+      let answers = [];
+
+      const questionEl = document.getElementById("question");
+      const buttonContainer = document.getElementById("buttonContainer");
+      const enterBtn = document.getElementById("enterBtn");
+      const resultText = document.getElementById("resultText");
+      const finalButton = document.getElementById("finalButton");
+
+      function shuffle(array) {
+        return array.sort(() => Math.random() - 0.5);
+      }
+
+      function renderQuestion() {
+        questionEl.textContent = questions[step].text;
+        buttonContainer.innerHTML = "";
+        shuffle(questions[step].words).forEach((word) => {
+          const btn = document.createElement("button");
+          btn.textContent = word;
+          btn.addEventListener("click", () => btn.classList.toggle("active"));
+          buttonContainer.appendChild(btn);
+        });
+      }
+
+      enterBtn.addEventListener("click", () => {
+        const selected = [
+          ...buttonContainer.querySelectorAll("button.active"),
+        ].map((b) => b.textContent);
+        if (!selected.length) return;
+        answers.push(selected);
+        if (step === 0) {
+          step = 1;
+          buttonContainer.style.opacity = "0";
+          questionEl.style.opacity = "0";
+          setTimeout(() => {
+            renderQuestion();
+            buttonContainer.style.opacity = "1";
+            questionEl.style.opacity = "1";
+          }, 500);
+        } else {
+          // Determine final program
+          const userWords = answers[1];
+          let scores = { RISE: 0, RESTORE: 0, RECLAIM: 0 };
+          userWords.forEach((word) => {
+            for (let [program, words] of Object.entries(programMap)) {
+              if (words.includes(word)) scores[program]++;
+            }
+          });
+          const chosenProgram = Object.entries(scores).sort(
+            (a, b) => b[1] - a[1]
+          )[0][0];
+          questionEl.style.display = "none";
+          buttonContainer.style.display = "none";
+          enterBtn.style.display = "none";
+          resultText.innerHTML = `<div id="finalResultsText">${chosenProgram}</div>`;
+          resultText.style.display = "block";
+
+          setTimeout(() => {
+            finalButton.style.display = "block";
+          }, 5000);
+        }
+      });
+
+      renderQuestion();
+    </script>
+  </body>
+</html>
