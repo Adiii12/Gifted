@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      #gifted-method {
+        width: 100%;
+        background-image: url("./img/gifted-method.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 170px 0px;
+        height: 90vh;
+      }
+      #gifted-method h1 {
+        font-family: "Spectral", serif;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #071f65;
+        margin-bottom: 29px;
+      }
+      #gifted-method p {
+        font-family: "Spectral", serif;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #455287;
+        margin-bottom: 100px;
+      }
+      #pillars {
+        max-width: 1218px;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        margin: auto;
+        justify-content: space-between;
+      }
+      #pillars .cardPillar {
+        max-width: 165px;
+        width: 18%;
+        height: 220px;
+        position: relative;
+      }
+
+      #pillars .cardPillar .inner {
+        width: 100%;
+        height: 164px;
+        border-radius: 50%;
+        width: 165px;
+        display: flex;
+        align-items: center;
+        z-index: 99;
+        background: transparent;
+        position: relative;
+      }
+      #pillars .cardPillar .inner .line {
+        position: absolute;
+        right: -35%;
+        z-index: -1;
+        display: none;
+      }
+      #pillars .cardPillar .inner:hover .line {
+        display: block;
+      }
+      #pillars .cardPillar .inner .video-play {
+        position: absolute;
+        z-index: 1;
+        bottom: 5px;
+        right: 5px;
+
+        display: none;
+      }
+      #pillars .cardPillar .inner .img-pillar {
+        border-radius: 50%;
+        height: 164px;
+        width: 165px;
+        position: relative;
+      }
+      #pillars .cardPillar:hover .inner .video-play {
+        display: block;
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      #pillars .cardPillar:hover .inner {
+        box-shadow: 0px 20px 40px 0px #dbb24380;
+      }
+      #pillars .cardPillar:hover .inner .img-pillar {
+        width: 100%;
+        transition: transform 0.3s ease;
+        height: 100%;
+        transform: scale(1.05);
+      }
+      #pillars .cardPillar .pillarText {
+        display: none;
+      }
+      #pillars .cardPillar:hover .pillarText {
+        display: block;
+        transition: transform 0.3s ease;
+        text-align: center;
+        margin-top: 15px;
+        font-family: "Spectral", serif;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #dbb243;
+      }
+      @media (max-width: 1200px) {
+        #pillars .cardPillar .inner .img-pillar,
+        #pillars .cardPillar .inner {
+          height: auto;
+          width: 90%;
+        }
+        #pillars .cardPillar:hover .inner {
+          transition: transform 0.3s ease;
+        }
+        #pillars .cardPillar:hover .inner .img-pillar {
+          transition: transform 0.3s ease;
+          transform: scale(1);
+        }
+        #pillars .cardPillar .pillarText {
+          font-size: 15px;
+        }
+        #gifted-method {
+          padding: 100px 0px;
+        }
+      }
+      @media (max-width: 769px) {
+        #pillars .cardPillar:hover .inner .img-pillar {
+          transition: transform 0.3s ease;
+          transform: scale(1.1);
+        }
+        #pillars .cardPillar .inner .video-play {
+          display: block;
+        }
+      }
+      @media (max-width: 669px) {
+        #pillars {
+          flex-wrap: wrap;
+        }
+        #pillars .cardPillar {
+          width: 32%;
+        }
+        #pillars .cardPillar .inner:hover .line {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gifted-method">
+      <h1>Our Methd: Gifted</h1>
+      <p>6 pillers to rebuild self esteam, confidence and inner power</p>
+
+      <div id="pillars">
+        <div class="cardPillar">
+          <div class="inner">
+            <img class="img-pillar" src="./img/pillar-1.svg" alt="" />
+            <img
+              class="video-play"
+              src="./img/video-play.svg"
+              data-audio="./audio/guide.m4a"
+              alt=""
+            />
+            <img class="line" src="./img/line.svg" alt="" />
+          </div>
+          <span class="pillarText">guide</span>
+        </div>
+        <div class="cardPillar">
+          <div class="inner">
+            <img class="img-pillar" src="./img/pillar-2.svg" alt="" />
+            <img
+              class="video-play"
+              src="./img/video-play.svg"
+              data-audio="./audio/Identite.m4a"
+              alt=""
+            />
+            <img class="line" src="./img/line.svg" alt="" />
+          </div>
+          <span class="pillarText">identité</span>
+        </div>
+        <div class="cardPillar">
+          <div class="inner">
+            <img class="img-pillar" src="./img/pillar-3.svg" alt="" />
+            <img
+              class="video-play"
+              src="./img/video-play.svg"
+              data-audio="./audio/face.m4a"
+              alt=""
+            />
+            <img class="line" src="./img/line.svg" alt="" />
+          </div>
+
+          <span class="pillarText">face</span>
+        </div>
+        <div class="cardPillar">
+          <div class="inner">
+            <img class="img-pillar" src="./img/pillar-4.svg" alt="" />
+            <img
+              class="video-play"
+              src="./img/video-play.svg"
+              data-audio="./audio/trace.m4a"
+              alt=""
+            />
+            <img class="line" src="./img/line.svg" alt="" />
+          </div>
+          <span class="pillarText">traces</span>
+        </div>
+        <div class="cardPillar">
+          <div class="inner">
+            <img class="img-pillar" src="./img/pillar-5.svg" alt="" />
+            <img
+              class="video-play"
+              src="./img/video-play.svg"
+              data-audio="./audio/energie.m4a"
+              alt=""
+            />
+            <img class="line" src="./img/line.svg" alt="" />
+          </div>
+          <span class="pillarText">énergie</span>
+        </div>
+        <div class="cardPillar">
+          <div class="inner">
+            <img class="img-pillar" src="./img/pillar-6.svg" alt="" />
+            <img
+              class="video-play"
+              src="./img/video-play.svg"
+              data-audio="./audio/desire.m4a"
+              alt=""
+            />
+          </div>
+          <span class="pillarText">désir</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      const playButtons = document.querySelectorAll(".video-play");
+      let currentAudio = null;
+      let currentButton = null;
+
+      playButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const audioSrc = button.getAttribute("data-audio");
+
+          // If same button is clicked again
+          if (currentButton === button) {
+            if (currentAudio.paused) {
+              currentAudio.play();
+              button.src = "./img/video-pause.svg";
+            } else {
+              currentAudio.pause();
+              button.src = "./img/video-play.svg";
+            }
+            return;
+          }
+
+          // Stop the current audio (if any)
+          if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            if (currentButton) currentButton.src = "./img/video-play.svg";
+          }
+
+          // Create new audio and play
+          currentAudio = new Audio(audioSrc);
+          currentAudio.play();
+          currentButton = button;
+          button.src = "./img/video-pause.svg";
+
+          // When audio ends, reset icon
+          currentAudio.addEventListener("ended", () => {
+            if (currentButton) currentButton.src = "./img/video-play.svg";
+            currentAudio = null;
+            currentButton = null;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
