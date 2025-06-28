@@ -105,7 +105,7 @@
         line-height: 1.2;
         letter-spacing: 5px;
         text-align: center;
-        
+
         color: #dbb243;
         text-shadow: 8px 4px 5px #ffffff; /* Shadow directly on the text */
       }
@@ -160,8 +160,8 @@
         #buttonContainer button {
           width: 48%;
         }
-        #finalResultsText{
-            font-size: 50px;
+        #finalResultsText {
+          font-size: 50px;
         }
       }
     </style>
@@ -169,7 +169,9 @@
   <body>
     <div id="coaching">
       <div id="innerCoaching">
-        <div class="question" id="question">Where are you now?</div>
+        <div class="question" id="question">
+          Qu’est-ce qui vous freine aujourd’hui ?
+        </div>
         <div class="buttons" id="buttonContainer"></div>
         <button id="enterBtn">Enter</button>
         <div class="result-text" id="resultText"></div>
@@ -181,43 +183,43 @@
     <script>
       const questions = [
         {
-          text: "Where are you now?",
+          text: "Qu’est-ce qui vous freine aujourd’hui ?",
           words: [
             "Burnout",
             "Honte",
             "Doute",
             "Trauma",
             "Deuil",
-            "Perte",
             "Solitude",
             "Blocage",
             "Déconnecté(e)",
             "Invisible",
             "Regret",
+            "Submergé(e)",
           ],
         },
         {
-          text: "Where Do You Want to Be?",
+          text: "Qu’aimeriez-vous ressentir à la place ?",
           words: [
             "Authentique",
-            "Clarté",
+            "Clair(e)",
             "Aligné(e)",
-            "Pouvoir",
             "Confiant(e)",
-            "Fort(e)",
             "Résilient(e)",
-            "Paix",
-            "Espoir",
-            "Liberté",
-            "Indépendance",
+            "En paix",
+            "Optimiste",
+            "Libre",
+            "Stable",
+            "Légitime",
+            "Ancré(e)",
           ],
         },
       ];
 
       const programMap = {
-        RISE: ["Clarté", "Aligné(e)", "Confiant(e)", "Espoir"],
-        RESTORE: ["Pouvoir", "Fort(e)", "Résilient(e)", "Indépendance"],
-        RECLAIM: ["Authentique", "Paix", "Liberté"],
+        RISE: ["Clair(e)", "Aligné(e)", "Confiant(e)", "Optimiste", "Légitime"],
+        RESTORE: ["Résilient(e)", "Stable", "En paix", "Ancré(e)"],
+        RECLAIM: ["Authentique", "Libre"],
       };
 
       let step = 0;
