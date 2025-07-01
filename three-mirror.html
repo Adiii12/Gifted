@@ -10,7 +10,7 @@
         padding: 28px 0px;
         width: 100%;
         overflow: hidden;
-        background-image: url("./img/mirror-bg.png");
+        background-image: url("https://gifted-experiences.com/wp-content/uploads/2025/07/mirror-bg.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -36,13 +36,62 @@
       }
       #three-mirror .mirror-card-inner .mirror-card {
         width: 30%;
+        position: relative;
       }
+
       #three-mirror .mirror-card-inner .mirror-card img {
-        width: 100%;
+        width: 270px;
         height: 480px;
         margin-bottom: 12px;
+        position: relative;
+        display: block;
+        margin: auto;
       }
-      #three-mirror .mirror-card-inner .mirror-card img:hover{
+      #three-mirror .mirror-card-inner .mirror-card:hover .mirror-video1,
+      #three-mirror .mirror-card-inner .mirror-card:hover .mirror-video2,
+      #three-mirror .mirror-card-inner .mirror-card:hover .mirror-video3 {
+        opacity: 1;
+      }
+      .mirror-video1 {
+        position: absolute;
+        top: 0.5%;
+        left: 2.3%;
+        width: 98%;
+        height: 483px;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: 999 !important;
+        clip-path: ellipse(50.5% 92% at 50% 50%);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: scale(0.98); /* Slightly shrink video inside the frame */
+      }
+      .mirror-video2 {
+        position: absolute;
+        top: -0.2%;
+        left: 8.7%;
+        width: 82%;
+        height: 483px;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: 888;
+        border-radius: 26px; /* subtle rounding */
+      }
+      .mirror-video3 {
+        position: absolute;
+        top: -0.8%;
+        left: 9%;
+        width: 84%;
+        height: 490px;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: 888;
+        border-radius: 40px; /* subtle rounding */
+      }
+      #three-mirror .mirror-card-inner .mirror-card:hover img {
         transition: transform 0.3s ease;
         transform: scale(1.05);
       }
@@ -59,13 +108,14 @@
       #three-mirror .mirror-card-inner .mirror-card p {
         font-family: "Spectral", serif;
         font-weight: 500;
-        font-size: 18px;
+        font-size: 17px;
         line-height: 100%;
         letter-spacing: 0%;
         text-align: center;
         color: #455287;
         margin-bottom: 60px;
-      }#reveal-truth:hover{
+      }
+      #reveal-truth:hover {
         transition: transform 0.3s ease;
         transform: scale(1.05);
       }
@@ -89,25 +139,32 @@
         letter-spacing: 0%;
         color: #ffffff;
       }
-      @media(max-width:800px){
-        #three-mirror .mirror-card-inner{
-            flex-wrap: wrap;
+
+      #three-mirror .mirror-card-inner .mirror-card:hover .mirror-default {
+        transition: transform 0.3s ease;
+        transform: scale(1.05);
+      }
+      @media (max-width: 1000px) {
+        #three-mirror .mirror-card-inner {
+          flex-wrap: wrap;
         }
-        #three-mirror .mirror-card-inner .mirror-card{
-            width: 48%;
+        #three-mirror .mirror-card-inner .mirror-card {
+          width: 270px;
+          margin: auto;
+        }
+        #three-mirror .mirror-card-inner .mirror-card img {
+          width: 270px;
         }
       }
-      @media(max-width:550px){
-        #three-mirror .mirror-card-inner .mirror-card{
-            width: 100%;
-            margin: auto;
+      /* @media (max-width: 800px) {
+        #three-mirror .mirror-card-inner {
+          flex-wrap: wrap;
         }
-        #three-mirror .mirror-card-inner .mirror-card{
-            width: auto;
-            display: block;
-            margin: auto;
+        #three-mirror .mirror-card-inner .mirror-card {
+          width: 48%;
         }
-      }
+      } */
+
     </style>
   </head>
   <body>
@@ -115,22 +172,58 @@
       <h1>Three Tranformation path</h1>
       <div class="mirror-card-inner">
         <div class="mirror-card">
-          <img src="./img/Rise mirror (1).png" alt="" />
+          <img
+            class="mirror-default"
+            src="https://gifted-experiences.com/wp-content/uploads/2025/07/Rise mirror (1).png"
+            alt=""
+          />
+          <video
+            class="mirror-video1"
+            src="./mirror-1.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
           <h4>Rise</h4>
           <p>1 month to find meaning and clarity</p>
         </div>
         <div class="mirror-card">
-          <img src="./img/Restore mirror.svg" alt="" />
+          <img
+            src="https://gifted-experiences.com/wp-content/uploads/2025/07/Restore mirror.svg"
+            alt=""
+          />
+          <video
+            class="mirror-video2"
+            src="./mirror-33.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
           <h4>Restore</h4>
           <p>3 month to restore self-steam and strength</p>
         </div>
         <div class="mirror-card">
-          <img src="./img/Reclaim.svg" alt="" />
+          <img
+            src="https://gifted-experiences.com/wp-content/uploads/2025/07/Reclaim.svg"
+            alt=""
+          />
+          <video
+            class="mirror-video3"
+            src="./mirror-2.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
           <h4>Restore</h4>
           <p>3 month to restore self-steam and strength</p>
         </div>
       </div>
-      <a href="https://gifted-experiences.com/programme/" id="reveal-truth">Reveal the path that suits you</a>
+      <a href="https://gifted-experiences.com/programme/" id="reveal-truth"
+        >Reveal the path that suits you</a
+      >
     </div>
   </body>
 </html>

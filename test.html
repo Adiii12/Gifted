@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mirror Hover Video</title>
+    <style>
+      body {
+        background: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .mirror-container {
+        position: relative;
+        width: 300px; /* Adjust to your image width */
+        cursor: pointer;
+      }
+
+      .mirror-frame {
+        display: block;
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .mirror-video {
+        position: absolute;
+        top: 2.3%;
+        left: 4.3%;
+        width: 94%;
+        height: 97%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: 999 !important;
+        clip-path: ellipse(50.5% 92% at 50% 50%);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: scale(0.98); /* Slightly shrink video inside the frame */
+      }
+
+      .mirror-container:hover .mirror-video {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mirror-container">
+      <!-- Replace this with your actual image path -->
+      <img src="./img/Rise mirror.svg" alt="Mirror" class="mirror-frame" />
+
+      <!-- Replace this with your actual video path -->
+      <video
+        class="mirror-video1"
+        src="./mirror-1.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
+    </div>
+  </body>
+</html>
