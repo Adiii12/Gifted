@@ -1,120 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-  </head>
-  <body>
-    <style>
-    @import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
-    #overlay1 {
-       position: fixed;
-       left: 0px;
-       right: 0px;
-       bottom: 0px;
-       top: 0px;
-       z-index: 999999 !important;
-       background-image: url("https://gifted-experiences.com/wp-content/uploads/2025/07/Rectangle\ 34624302.png");
-       background-position: center;
-       background-size: cover;
-       background-repeat: no-repeat;
-       display: none;
-       opacity: 0;
-     }
 
-     #overlay1 .question-box1 {
-       width: 100%;
-       height: 100vh;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-     }
-     #questionsContainer1 {
-       max-width: 813px;
-       width: 90%;
-       margin: auto;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       flex-direction: column;
-     }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+</head>
 
-     #successMsg1 {
-       font-family: "Spectral", serif;
-       font-weight: 400;
-       font-size: 48px;
-       line-height: 100%;
-       letter-spacing: 0%;
-       text-align: center;
-       color: #071f65;
-       display: none;
-     }
-     #submitBtn1,
-     #submitBtn2 {
-       margin: 20px;
-       border: 1px solid #071f65;
-       padding: 4px 10px;
-       border-radius: 5px;
-       font-family: "Spectral", serif;
-       outline: none;
-       color: #071f65;
-       box-shadow: none;
-       cursor: pointer;
-     }
-     #questionText1 {
-       font-family: "Spectral", serif;
-       font-weight: 400;
-       font-size: 48px;
-       line-height: 48.06px;
-       letter-spacing: 0%;
-       text-align: center;
-       color: #071f65;
-       margin-bottom: 50px;
-     }
-     #answerInput1 {
-       text-align: center;
-       max-width: 595px;
-       width: 100%;
-       border: none;
-       outline: none;
-       box-shadow: none;
-       border-bottom: 1px solid #f7f6f4;
-       height: 76px;
-       margin: auto;
-       background: transparent;
-       font-family: "Spectral", serif; /* Change to your desired font */
-       text-align: center; /* Center the placeholder text */
-       font-weight: 400;
-       font-size: 28px;
-       line-height: 33.64px;
-       letter-spacing: 0%;
-       color: #071f65b2;
-     }
+<body>
+  <style>
+@import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-     #answerInput1::placeholder {
-       font-family: "Spectral", serif; /* Change to your desired font */
-       text-align: center; /* Center the placeholder text */
-       font-weight: 400;
-       font-size: 28px;
-       line-height: 33.64px;
-       letter-spacing: 0%;
-       color: #071f65b2;
+#overlay1 {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    z-index: 999999 !important;
+    background-image: url("https://gifted-experiences.com/wp-content/uploads/2025/07/Rectangle\ 34624302.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    display: none;
+}
 
+#overlay1.active {
+    opacity: 1;
+    transform: scale(1);
+}
 
+#overlay1.hiding {
+    opacity: 0;
+    transform: scale(0.95); /* Slightly scale down for a subtle zoom-out effect */
+}
 
-     
-     }
-   </style>
-   <div class="question-answer-overlay1" id="overlay1">
-     <div class="question-box1">
-       <div class="questions1" id="questionsContainer1">
-         <!-- JS will inject question + input + button here -->
-       </div>
-     </div>
-   </div>
-   <script>
-    const questions = [
+#overlay1 .question-box1 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#questionsContainer1 {
+    max-width: 813px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#successMsg1 {
+    font-family: "Spectral", serif;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #071f65;
+    display: none;
+}
+
+#submitBtn1 {
+    margin: 20px;
+    border: 1px solid #071f65;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-family: "Spectral", serif;
+    outline: none;
+    color: #071f65;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+#submitBtn2 {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    color: #071f65;
+    font-family: "Spectral", serif;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+#questionText1 {
+    font-family: "Spectral", serif;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 48.06px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #071f65;
+    margin-bottom: 50px;
+}
+
+#answerInput1 {
+    text-align: center;
+    max-width: 595px;
+    width: 100%;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-bottom: 1px solid #f7f6f4;
+    height: 76px;
+    margin: auto;
+    background: transparent;
+    font-family: "Spectral", serif;
+    text-align: center;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 33.64px;
+    letter-spacing: 0%;
+    color: #071f65b2;
+}
+
+#answerInput1::placeholder {
+    font-family: "Spectral", serif;
+    text-align: center;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 33.64px;
+    letter-spacing: 0%;
+    color: #071f65b2;
+}
+
+#copyright-pre-home {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    right: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #455287;
+}
+  </style>
+  <div class="question-answer-overlay1" id="overlay1">
+    <p id="copyright-pre-home">© 2025 gifted™</p>
+    <div class="question-box1">
+      <div class="questions1" id="questionsContainer1">
+        <!-- JS will inject question + input + button here -->
+      </div>
+    </div>
+  </div>
+  <script>
+   const questions = [
       "Qui seriez-vous sans les attentes qu’on a posées sur vous ?",
       "Quel poids portez-vous, qui ne vous appartient pas ?",
       "Quelle épreuve vous a forcée à devenir fort(e) ?",
@@ -129,7 +173,7 @@
       "Quelle part de vous mérite d’être entendue ?",
       "Qui seriez-vous sans vos peurs ?",
     ];
-  
+
     const successResponses = [
       "Vous êtes plus fort(e) que ce que vous croyez.",
       "Ce que vous ressentez est une boussole, pas un fardeau.",
@@ -139,83 +183,84 @@
       "Il est temps de vous retrouver.",
       "Vos épreuves ont de la valeur. Elles font de vous qui vous êtes.",
     ];
-  
-    const overlayEl = document.querySelector(".question-answer-overlay1");
+
+    const overlayEl = document.getElementById("overlay1");
     const questionsContainer = document.getElementById("questionsContainer1");
-  
-    // Check cooldown
-    function canShowModal() {
-      const lastHidden = localStorage.getItem("lastModalHidden1");
-      if (!lastHidden) return true;
-  
-      const now = Date.now();
-      return now - parseInt(lastHidden) >= 60 * 1000;
-    }
-  
-    // Show modal
+    const ONE_MINUTE = 60 * 1000; // 1 minute in milliseconds
+
     function showModal() {
       const randomIndex = Math.floor(Math.random() * questions.length);
       const questionText = questions[randomIndex];
-  
-      overlayEl.style.display = "flex";
-      setTimeout(() => (overlayEl.style.opacity = "1"), 10);
-      document.body.classList.add("modal-open1");
-  
+
+      overlayEl.style.display = "block";
+      setTimeout(() => overlayEl.classList.add("active"), 10);
+
       questionsContainer.innerHTML = `
         <div id="questionText1">${questionText}</div>
         <input type="text" id="answerInput1" placeholder="Écrivez vos pensées…" />
         <button onclick="submitAnswer()" id="submitBtn1">Entrer</button>
+        <div class="success-message1" id="successMsg1" style="display: none;">Thank you! Redirecting...</div>
         <button onclick="closePreHome()" id="submitBtn2">Leaders, votre accès direct</button>
-        <div class="success-message1" id="successMsg1" style="display:none;">Thank you! Redirecting...</div>
       `;
     }
-  
-    // Hide modal and set cooldown
-    function hideModalAndStartCooldown() {
-      overlayEl.style.opacity = "0";
-      setTimeout(() => {
-        overlayEl.style.display = "none";
-        document.body.classList.remove("modal-open1");
-        localStorage.setItem("lastModalHidden1", Date.now().toString());
-      }, 300);
-    }
-  
+
     function submitAnswer() {
       const input = document.getElementById("answerInput1");
       const answer = input.value.trim();
       const questionText = document.getElementById("questionText1");
       const submitBtn = document.getElementById("submitBtn1");
       const successMsg = document.getElementById("successMsg1");
-  
+
       if (answer === "") {
         alert("Veuillez entrer une réponse.");
         return;
       }
-  
+
       const randomSuccess = successResponses[Math.floor(Math.random() * successResponses.length)];
       successMsg.innerText = randomSuccess;
-  
+
       questionText.style.display = "none";
       input.style.display = "none";
       submitBtn.style.display = "none";
       successMsg.style.display = "block";
-  
+
       setTimeout(() => {
-        hideModalAndStartCooldown();
+        overlayEl.classList.remove("active");
+        overlayEl.classList.add("hiding");
+        setTimeout(() => {
+          overlayEl.style.display = "none";
+          overlayEl.classList.remove("hiding");
+          document.body.classList.remove("modal-open1");
+          // Store the modal close timestamp
+          localStorage.setItem("modalLastClosed", Date.now());
+        }, 1000);
       }, 2000);
     }
-  
+
     function closePreHome() {
-      hideModalAndStartCooldown();
+      overlayEl.classList.remove("active");
+      overlayEl.classList.add("hiding");
+      setTimeout(() => {
+        overlayEl.style.display = "none";
+        overlayEl.classList.remove("hiding");
+        // Store the modal close timestamp
+        localStorage.setItem("modalLastClosed", Date.now());
+      }, 1000);
     }
-  
-    // On page load, show modal if 1 minute has passed
+
+    // Check if modal should be shown based on last closed time
     window.onload = () => {
-      if (canShowModal()) {
+      const lastClosed = localStorage.getItem("modalLastClosed");
+      const currentTime = Date.now();
+
+      if (!lastClosed || currentTime - lastClosed >= ONE_MINUTE) {
+        // Show modal immediately if never shown or if 1 minute has passed
         showModal();
+      } else {
+      
       }
     };
   </script>
-  
-  </body>
+</body>
+
 </html>
